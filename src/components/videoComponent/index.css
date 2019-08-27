@@ -1,0 +1,26 @@
+.video-component {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  position: relative;
+}
+
+.video-component video {
+  height: 480px;
+  width: 853px;
+  /* background-color: blue; */
+  margin: auto;
+}
+
+.controls {
+  position: absolute;
+  background-color: brown;
+  z-index: 10000;
+}
+
+.current {
+  height: 70px;
+  width: 400px;
+  z-index: 10;
+}

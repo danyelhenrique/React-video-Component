@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+header.header-content {
+  display: flex;
+  height: 55px;
+  width: 100%;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+}
+
+header.header-content::after {
+  content: "";
+  box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.06);
+  height: 5px;
+  z-index: 5;
+}
+
+header.header-content .menu {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
+}
+
+header.header-content .menu .burguer-logo {
+  height: 100%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin-left: 25px;
+}
+header.header-content .menu .burguer-logo a.burguer {
+  height: 100%;
+  margin-right: 30px;
+}
+
+header.header-content .menu .burguer-logo .logo a {
+  height: 100%;
+}
+header.header-content .menu .burguer-logo .logo img {
+  height: 18px;
+}
+
+header.header-content .header-item-search {
+  flex: 1;
+  display: flex;
+  margin-left: 220px;
+}
+
+header.header-content .header-item-search form {
+  border: 1px solid #cccccc;
+  display: flex;
+  height: 30px;
+  width: 650px;
+}
+
+header.header-content .header-item-search form input.header-input {
+  padding: 5px;
+  display: flex;
+  width: 100%;
+  border: none;
+  border-right: 1px solid #cccccc;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  background-color: transparent;
+}
+
+header.header-content .header-item-search form .header-input-button {
+  height: 30px;
+  width: 61px;
+}
+
+header.header-content .header-item-search form .header-input-button button {
+  padding: 20px;
+  padding: 5px 20px;
+  width: 60px;
+  height: 30px;
+  border: none;
+  background-color: rgb(240, 240, 240);
+}
+
+.header-user-items {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 300px;
+  justify-content: flex-end;
+  height: 100%;
+  align-self: center;
+}
+
+.header-user-items a {
+  height: 50%;
+  margin: 0 5px 0 5px;
+  padding: 0 10px 0 10px;
+}
+.header-user-items a img {
+  /*  */
+}
+
+.header-user-menu-dropdown {
+  margin-right: 5px;
+  cursor: pointer;
+}
