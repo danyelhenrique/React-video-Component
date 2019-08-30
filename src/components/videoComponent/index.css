@@ -1,30 +1,156 @@
-.video-component {
-  height: 80%;
-  width: 100%;
-  background-color: red;
+.main-video-component {
   display: flex;
+  height: 495px;
+  min-height: 480px;
+  width: 50%;
+  width: 100%;
+  flex-direction: column;
+  background-color: aqua;
+  margin: 0 auto;
+  height: 100%;
+  /* z-index: 999; */
+}
+
+.main-video-normal {
+  height: 495px !important;
+  width: 100%;
+}
+
+.main-video-full-screen {
+  width: 100% !important;
+  height: 100%;
+  z-index: 200;
+}
+
+.md {
+  height: 495px;
+  width: 50%;
+}
+
+.video-item {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.video-content {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   position: relative;
-  flex-direction: column
 }
 
-.video-component video {
-  height: 480px;
-  width: 853px;
-  /* background-color: blue; */
-  margin: auto;
-}
-
-.controls {
+.video-configurations {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  background-color: brown;
-  z-index: 10000;
+  z-index: 20;
+  bottom: 0px;
+  width: 100%;
+}
+.video-confurations-items {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
+  background-color: red;
+  height: 36px;
+  justify-content: space-between;
+}
+.video-confurations-items .vol-configuration {
+  margin-right: 15px;
+}
+.video-play {
+  align-self: flex-start;
+
+  align-self: center;
+}
+.config {
+  display: flex;
+  width: 330px;
+  align-self: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.current {
-  position: absolute;
-  height: 400px;
-  /* width: 400px; */
-  z-index: 10;
-  background-color: blue !important;
-  bottom: 0;
+#video-icon {
+  width: 23px !important;
+  height: 23px !important;
+  color: rgb(255, 255, 255);
 }
+
+.progress {
+  position: relative;
+  background-color: aqua;
+  height: 7px;
+  display: flex;
+  cursor: pointer;
+}
+.progress .progress-item {
+  height: 100%;
+  background-color: royalblue;
+  display: flex;
+  z-index: 20;
+  position: absolute;
+}
+
+input[type="range"].volume {
+  -webkit-appearance: none;
+  background-color: silver;
+  width: 200px;
+  height: 20px;
+  outline: none;
+}
+
+input[type="range"].volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #666;
+  opacity: 0.5;
+  width: 10px;
+  height: 20px;
+}
+
+.vol-configuration {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.icon {
+  cursor: pointer;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.vol-configuration .volume {
+  opacity: 0;
+}
+
+.ok + .volume {
+  opacity: 1;
+}
+
+/*  */
+/*  */
+/* 
+.main-video-component {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: red;
+}
+
+.video-content {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.video-item {
+ 
+} */
