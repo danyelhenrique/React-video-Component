@@ -14,8 +14,6 @@ import { FiMaximize } from "react-icons/fi"; // full screen //ok
 import { FiMinimize } from "react-icons/fi"; // minimazi screen
 import { MdCropLandscape } from "react-icons/md";
 
-// MdCropLandscape
-
 import { FaRegClosedCaptioning } from "react-icons/fa"; // captions
 
 function RENDERVIDEO() {
@@ -30,7 +28,15 @@ function RENDERVIDEO() {
   const [playOrPause, SetplayOrPauseItems] = useState({ playing: false });
   const [sizeVideo, SetsizeVideo] = useState({ fullScreen: false });
   const [lgScreen, SetLgScreen] = useState({ largeScreen: false });
+  const [prevLgScreen, SetPrevLgScreen] = useState({ largeScreen: false });
+  const [videoItemsClass, SetvideoItemsClass] = useState({ added: true });
   const rf = useRef();
+  const rfClass = useRef();
+  useEffect(() => {
+    setInterval(() => {
+      setTimeout(ClearControls, 5000);
+    }, 8000);
+  }, []);
 
   function progressBarvideo() {
     const video = rf.current;
@@ -57,6 +63,9 @@ function RENDERVIDEO() {
       SetsizeVideo({
         fullScreen: false
       });
+      // SetvideoItemsClass({
+      //   added: true
+      // });
 
       if (document.cancelFullScreen) {
         document.cancelFullScreen();
@@ -68,10 +77,18 @@ function RENDERVIDEO() {
     }
   }
 
-  function setFullScreen() {
+  function setFullScreen(e) {
     SetsizeVideo({
-      fullScreen: true,
+      fullScreen: true
+    });
+    SetPrevLgScreen({
+      largeScreen: lgScreen.largeScreen
+    });
+    SetLgScreen({
       largeScreen: false
+    });
+    SetvideoItemsClass({
+      added: true
     });
 
     if (
@@ -89,8 +106,16 @@ function RENDERVIDEO() {
       }
     } else {
       SetsizeVideo({
-        fullScreen: false,
-        largeScreen: false
+        fullScreen: false
+      });
+      SetLgScreen({
+        largeScreen: prevLgScreen.largeScreen
+      });
+      SetPrevLgScreen({
+        largeScreen: lgScreen.largeScreen
+      });
+      SetvideoItemsClass({
+        added: false
       });
 
       if (document.cancelFullScreen) {
@@ -104,6 +129,7 @@ function RENDERVIDEO() {
   }
 
   function largeScreen() {
+    if (!!sizeVideo.fullScreen) return;
     SetLgScreen({
       largeScreen: !lgScreen.largeScreen
     });
@@ -116,12 +142,34 @@ function RENDERVIDEO() {
   function setPlayOrPause(e) {
     let video = rf.current;
     if (video.paused) {
+      SetvideoItemsClass({ added: true });
       video.play();
       SetplayOrPauseItems(() => ({ playing: true }));
     } else {
       video.pause();
       SetplayOrPauseItems(() => ({ playing: false }));
     }
+  }
+
+  function mouseOver() {
+    SetvideoItemsClass({ added: true });
+  }
+  function ClearControls() {
+    const checkMpoving = document.querySelector(".video-content");
+    let video = rf.current;
+    if (video.paused) return;
+
+    const ismove = (checkMpoving.onmousemove = function() {
+      if (ismove) {
+        return SetvideoItemsClass({ added: true });
+      }
+    });
+
+    SetvideoItemsClass({ added: false });
+  }
+
+  function mouseMove() {
+    SetvideoItemsClass({ added: true });
   }
   const divSt = {
     width: "100%"
@@ -131,31 +179,51 @@ function RENDERVIDEO() {
   };
 
   const setIcons = {
+    iconId: "video-icon",
     renderPlayOrPause() {
       if (!playOrPause.playing) {
-        return <FiPlay id="video-icon"></FiPlay>;
+        return <FiPlay id={this.iconId}></FiPlay>;
       } else {
-        return <FiPause id="video-icon"></FiPause>;
+        return <FiPause id={this.iconId}></FiPause>;
+      }
+    },
+    renderFullScreenorNot() {
+      if (!sizeVideo.fullScreen) {
+        return <FiMaximize id={this.iconId}></FiMaximize>;
+      } else {
+        return <FiMinimize id={this.iconId}></FiMinimize>;
       }
     }
   };
 
-  function fka() {
+  function videoRender() {
     const normalOrFullScreen =
       !!sizeVideo.fullScreen && !lgScreen.largeScreen
         ? "main-video-full-screen"
         : "main-video-normal";
-    const largeOrFullScreen = !!lgScreen.largeScreen ? "md" : "";
+    const largeOrFullScreen =
+      !!lgScreen.largeScreen && !sizeVideo.fullScreen ? "md" : "";
+    const hideShowConfig = !!videoItemsClass.added
+      ? "show-controls"
+      : "hidden-controls";
+
     return (
       <div className={`${normalOrFullScreen} ${largeOrFullScreen} `}>
-        {/* <div className={`${nromalOrFullScreen} ${verifiLargeScreen}` }> */}
         <div className={`main-video-component`}>
-          <div className="video-content">
-            <video controls className="video-item" ref={rf} controls={false}>
-              <source src={video} type="video/mp4" />
-            </video>
-
-            <div className="video-configurations">
+          <div
+            className="video-content"
+            onMouseOver={() => mouseOver()}
+            onMouseOut={e => ClearControls(e)}
+            onMouseMove={() => mouseMove()}
+            ref={rfClass}
+          >
+            {/*  */}
+            <div className="movie">
+              <video controls className="video-item" ref={rf} controls={false}>
+                <source src={video} type="video/mp4" />
+              </video>
+            </div>
+            <div className="video-configurations" id={hideShowConfig}>
               <div class="progress" style={divSt} onClick={e => setTime(e)}>
                 <div class="progress-item" style={divStitem}></div>
               </div>
@@ -185,8 +253,9 @@ function RENDERVIDEO() {
                     ></MdCropLandscape>
                   </div>
 
-                  <div className="maxi-min" onClick={() => setFullScreen()}>
-                    <FiMaximize id="video-icon"></FiMaximize>
+                  <div className="maxi-min" onClick={e => setFullScreen(e)}>
+                    {/* <FiMaximize id="video-icon"></FiMaximize> */}
+                    {setIcons.renderFullScreenorNot()}
                   </div>
                 </div>
               </div>
@@ -196,7 +265,7 @@ function RENDERVIDEO() {
       </div>
     );
   }
-  return <>{fka()}</>;
+  return <>{videoRender()}</>;
 }
 
 export default RENDERVIDEO;
