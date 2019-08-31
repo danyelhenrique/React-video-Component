@@ -6,34 +6,28 @@
   flex-direction: column;
   height: 100%;
 }
+
 .main-video-normal,
 div.md {
   display: flex;
   min-width: 435px;
 }
 
-.main-video-normal {
+div.main-video-normal {
   height: 495px !important;
   width: 50%;
 }
 
-.main-video-full-screen {
+div.main-video-full-screen {
   width: 100% !important;
   height: 100%;
   z-index: 200;
 }
 
-.md {
+div.main-video-normal.md {
   width: 100%;
 }
-
-.video-item {
-  display: flex;
-  height: 100%;
-  width: 100%;
-}
-
-.video-content {
+div.video-content {
   background-color: rgb(0, 0, 0);
   display: flex;
   width: 100%;
@@ -41,7 +35,18 @@ div.md {
   position: relative;
 }
 
-.video-configurations {
+div.video-content div.movie {
+  height: 100%;
+  width: 100%;
+}
+
+div.video-content div.movie .video-item {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+div.video-content .video-configurations {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -49,7 +54,7 @@ div.md {
   bottom: 0px;
   width: 100%;
 }
-.video-confurations-items {
+div.video-content div.video-configurations .video-confurations-items {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -60,15 +65,14 @@ div.md {
   height: 36px;
   justify-content: space-between;
 }
-.video-confurations-items .vol-configuration {
+div.video-configurations .video-confurations-items .config .vol-configuration {
   margin-right: 15px;
 }
-.video-play {
+div.video-configurations .video-confurations-items .video-play {
   align-self: flex-start;
-
   align-self: center;
 }
-.config {
+div.video-configurations .video-confurations-items .config {
   display: flex;
   width: 330px;
   align-self: center;
@@ -76,22 +80,22 @@ div.md {
   justify-content: space-between;
 }
 
-#video-icon {
+div.video-configurations .video-confurations-items #video-icon {
   width: 23px !important;
   height: 23px !important;
   color: rgb(255, 255, 255);
 }
 
-.progress {
+div.video-configurations .progress {
   position: relative;
   height: 4px;
   display: flex;
   cursor: pointer;
   background-color: rgb(136, 136, 133);
 }
-.progress .progress-item {
+div.video-configurations .progress .progress-item {
   height: 100%;
-  background-color: rgb(255, 0, 0);
+  background-color: transparent;
   display: flex;
   z-index: 20;
   position: absolute;
@@ -113,35 +117,31 @@ input[type="range"].volume::-webkit-slider-thumb {
   height: 20px;
 }
 
-.vol-configuration {
+div.video-configurations .video-confurations-items .config .vol-configuration {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.icon {
-  cursor: pointer;
-  width: 25px !important;
-  height: 25px !important;
+div.video-configurations
+  .video-confurations-items
+  .config
+  .vol-configuration
+  .volume {
+  /* opacity: 0; */
+  /* é o input para aparecer no hover */
 }
 
-.vol-configuration .volume {
+.main-video-component div.video-content div.video-configurations#show-controls {
+  opacity: 1;
+}
+
+.main-video-component
+  div.video-content
+  div.video-configurations#hidden-controls {
   opacity: 0;
 }
 
-.ok + .volume {
-  opacity: 1;
-}
-
-.movie {
-  height: 100%;
-  width: 100%;
-}
-
-#show-controls {
-  opacity: 1;
-}
-
-.movie:hover ~ #show-controls,
+div.video-content div.movie:hover ~ #show-controls,
 .video-content:hover > #show-controls {
   opacity: 1;
   animation-name: show;
@@ -163,11 +163,11 @@ input[type="range"].volume::-webkit-slider-thumb {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(248, 80, 50, 1) 0%,
-    rgba(241, 111, 92, 1) 50%,
-    rgba(246, 41, 12, 1) 51%,
-    rgba(240, 47, 23, 1) 71%,
-    rgba(231, 56, 39, 1) 100%
+    #d50000 0%,
+    #b71c1c 50%,
+    #d50000 51%,
+    #d50000 71%,
+    #d50000 100%
   );
   display: flex;
   z-index: 20;
@@ -326,8 +326,4 @@ input[type="range"].volume::-webkit-slider-thumb {
   transition-property: width;
   transition-duration: 0.4s;
   transition-delay: 0;
-}
-
-#hidden-controls {
-  opacity: 0;
 }

@@ -233,7 +233,7 @@ function RENDERVIDEO() {
                 </div>
                 <div className="config">
                   <div className="vol-configuration">
-                    <FiVolume1 id="video-icon" className="ok"></FiVolume1>
+                    <FiVolume1 id="video-icon" className="volume-icon"></FiVolume1>
                     <input
                       className="volume"
                       type="range"
