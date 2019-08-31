@@ -1,14 +1,21 @@
 .main-video-component {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-height: 480px;
   width: 50%;
   min-width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
 }
 
 .main-video-normal,
 div.md {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-width: 435px;
 }
@@ -29,6 +36,8 @@ div.main-video-normal.md {
 }
 div.video-content {
   background-color: rgb(0, 0, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   max-height: 100%;
@@ -41,13 +50,20 @@ div.video-content div.movie {
 }
 
 div.video-content div.movie .video-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 100%;
   width: 100%;
 }
 
 div.video-content .video-configurations {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   position: absolute;
   z-index: 20;
@@ -55,28 +71,49 @@ div.video-content .video-configurations {
   width: 100%;
 }
 div.video-content div.video-configurations .video-confurations-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-item-align: center;
   align-self: center;
   background-color: transparent;
   height: 36px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 div.video-configurations .video-confurations-items .config .vol-configuration {
   margin-right: 15px;
 }
 div.video-configurations .video-confurations-items .video-play {
+  -ms-flex-item-align: start;
   align-self: flex-start;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
 }
 div.video-configurations .video-confurations-items .config {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 330px;
+  -ms-flex-item-align: center;
   align-self: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -89,6 +126,8 @@ div.video-configurations .video-confurations-items #video-icon {
 div.video-configurations .progress {
   position: relative;
   height: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   cursor: pointer;
   background-color: rgb(136, 136, 133);
@@ -96,6 +135,8 @@ div.video-configurations .progress {
 div.video-configurations .progress .progress-item {
   height: 100%;
   background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   z-index: 20;
   position: absolute;
@@ -118,7 +159,12 @@ input[type="range"].volume::-webkit-slider-thumb {
 }
 
 div.video-configurations .video-confurations-items .config .vol-configuration {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 
@@ -144,10 +190,23 @@ div.video-configurations
 div.video-content div.movie:hover ~ #show-controls,
 .video-content:hover > #show-controls {
   opacity: 1;
+  -webkit-animation-name: show;
   animation-name: show;
+  -webkit-animation-duration: 5s;
   animation-duration: 5s;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes show {
@@ -161,6 +220,14 @@ div.video-content div.movie:hover ~ #show-controls,
 
 .progress .progress-item {
   height: 100%;
+  background: -o-linear-gradient(
+    315deg,
+    #d50000 0%,
+    #b71c1c 50%,
+    #d50000 51%,
+    #d50000 71%,
+    #d50000 100%
+  );
   background: linear-gradient(
     135deg,
     #d50000 0%,
@@ -169,39 +236,21 @@ div.video-content div.movie:hover ~ #show-controls,
     #d50000 71%,
     #d50000 100%
   );
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   z-index: 20;
   position: absolute;
+  -webkit-animation-name: progressive;
   animation-name: progressive;
+  -webkit-animation-duration: 2s;
   animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 @-webkit-keyframes progress {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
-}
-@-moz-keyframes progress {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
-}
-@-ms-keyframes progress {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
-}
-@-o-keyframes progress {
   0% {
     background-position: 0 0;
   }
@@ -218,6 +267,16 @@ div.video-content div.movie:hover ~ #show-controls,
   }
 }
 .progress-item:after {
+  background: -o-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
   background: linear-gradient(
     45deg,
     rgba(255, 255, 255, 0.15) 25%,
@@ -254,6 +313,8 @@ div.video-content div.movie:hover ~ #show-controls,
   left: 0;
   position: absolute;
   top: 0;
+  -webkit-transition: width 0.4s ease 0s;
+  -o-transition: width 0.4s ease 0s;
   transition: width 0.4s ease 0s;
   width: 100%;
   -webkit-transition-property: width;
@@ -273,6 +334,16 @@ div.video-content div.movie:hover ~ #show-controls,
   transition-delay: 0;
 }
 .progress:after {
+  background: -o-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.1) 25%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
   background: linear-gradient(
     45deg,
     rgba(0, 0, 0, 0.1) 25%,
@@ -309,6 +380,8 @@ div.video-content div.movie:hover ~ #show-controls,
   left: 0;
   position: absolute;
   top: 0;
+  -webkit-transition: width 0.4s ease 0s;
+  -o-transition: width 0.4s ease 0s;
   transition: width 0.4s ease 0s;
   width: 100%;
   -webkit-transition-property: width;
