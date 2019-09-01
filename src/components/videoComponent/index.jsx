@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./index.css";
 import video from "../../videos/video.mp4";
+import tumb from "../../assets/thumb.png";
 
 import { FiSkipForward } from "react-icons/fi"; //next
 import { FiSkipBack } from "react-icons/fi"; // prev
@@ -24,7 +25,11 @@ function RENDERVIDEO() {
     }, 1000);
   }, []);
 
-  const [progressBar, SetprogressBar] = useState({ progress: 0 });
+  const [progressBar, SetprogressBar] = useState({
+    progress: 0,
+    current: 0,
+    total: 0
+  });
   const [playOrPause, SetplayOrPauseItems] = useState({ playing: false });
   const [sizeVideo, SetsizeVideo] = useState({ fullScreen: false });
   const [lgScreen, SetLgScreen] = useState({ largeScreen: false });
@@ -42,7 +47,11 @@ function RENDERVIDEO() {
     const video = rf.current;
     video.controls = false;
     const totalProgress = parseInt((video.currentTime / video.duration) * 100);
-    SetprogressBar({ progress: totalProgress });
+    SetprogressBar({
+      progress: totalProgress,
+      current: video.currentTime,
+      total: video.duration
+    });
   }
 
   function setTime(e) {
@@ -52,6 +61,20 @@ function RENDERVIDEO() {
     } = rf;
     const timeUpdate = duration * (e.nativeEvent.offsetX / clientWidth);
     video.currentTime = timeUpdate;
+  }
+  function formatTime() {
+    let time = progressBar.current;
+    let NewTimeTOtalVideo = progressBar.total / 60;
+    let timeTOtalVideo = NewTimeTOtalVideo.toFixed(2)
+      .toString()
+      .replace(".", ":");
+    time = Math.round(time);
+    let minutes = Math.floor(time / 60);
+    minutes = minutes >= 10 ? minutes : "0" + minutes;
+    time = Math.floor(time % 60);
+    time = time >= 10 ? time : "0" + time;
+    // return minutes + ":" + time;
+    return `${minutes}:${time} / ${timeTOtalVideo}`;
   }
 
   function monitoryScreen() {
@@ -151,6 +174,13 @@ function RENDERVIDEO() {
     }
   }
 
+  function setMuteVolume() {
+    const video = rf.current;
+    if (video.volume > 0) video.volume = 0;
+    else {
+      video.volume = 0.5;
+    }
+  }
   function mouseOver() {
     SetvideoItemsClass({ added: true });
   }
@@ -219,7 +249,14 @@ function RENDERVIDEO() {
           >
             {/*  */}
             <div className="movie">
-              <video controls className="video-item" ref={rf} controls={false}>
+              <video
+                preload="auto"
+                controls
+                className="video-item"
+                ref={rf}
+                controls={false}
+                poster={tumb}
+              >
                 <source src={video} type="video/mp4" />
               </video>
             </div>
@@ -230,10 +267,15 @@ function RENDERVIDEO() {
               <div className="video-confurations-items">
                 <div className="video-play" onClick={e => setPlayOrPause(e)}>
                   {setIcons.renderPlayOrPause()}
+                  <span className="time-video">{formatTime()}</span>
                 </div>
                 <div className="config">
                   <div className="vol-configuration">
-                    <FiVolume1 id="video-icon" className="volume-icon"></FiVolume1>
+                    <FiVolume1
+                      id="video-icon"
+                      className="volume-icon"
+                      onClick={() => setMuteVolume()}
+                    ></FiVolume1>
                     <input
                       className="volume"
                       type="range"
