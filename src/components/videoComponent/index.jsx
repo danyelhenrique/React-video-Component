@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import PLAYLIST from "../playlist";
 import "./index.css";
 import video from "../../videos/video.mp4";
 import tumb from "../../assets/thumb.png";
@@ -77,7 +78,7 @@ function RENDERVIDEO() {
     return `${minutes}:${time} / ${timeTOtalVideo}`;
   }
 
-  function monitoryScreen() {
+  function monitoryScreen() {  
     if (
       !document.webkitIsFullScreen &&
       !document.mozFullScreen &&
@@ -86,20 +87,18 @@ function RENDERVIDEO() {
       SetsizeVideo({
         fullScreen: false
       });
-      // SetvideoItemsClass({
-      //   added: true
-      // });
 
       if (document.cancelFullScreen) {
         document.cancelFullScreen();
       } else if (document.mozCancelFullScreen) {
         document.mozCancelFullScreen();
+        document.documentElement.requestFullscreen();
       } else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
-    }
+    
   }
-
+  }
   function setFullScreen(e) {
     SetsizeVideo({
       fullScreen: true
@@ -120,9 +119,12 @@ function RENDERVIDEO() {
     ) {
       if (document.documentElement.requestFullScreen) {
         document.documentElement.requestFullScreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
+      } 
+      else if (document.documentElement.mozRequestFullScreen) {
         document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullScreen) {
+      } 
+      
+      else if (document.documentElement.webkitRequestFullScreen) {
         document.documentElement.webkitRequestFullScreen(
           Element.ALLOW_KEYBOARD_INPUT
         );
@@ -226,88 +228,86 @@ function RENDERVIDEO() {
     }
   };
 
-  function videoRender() {
-    const normalOrFullScreen =
-      !!sizeVideo.fullScreen && !lgScreen.largeScreen
-        ? "main-video-full-screen"
-        : "main-video-normal";
-    const largeOrFullScreen =
-      !!lgScreen.largeScreen && !sizeVideo.fullScreen ? "md" : "";
-    const hideShowConfig = !!videoItemsClass.added
-      ? "show-controls"
-      : "hidden-controls";
+ 
+  const normalOrFullScreen =
+    !!sizeVideo.fullScreen && !lgScreen.largeScreen
+      ? "main-video-full-screen"
+      : "main-video-normal";
+  const largeOrFullScreen =
+    !!lgScreen.largeScreen && !sizeVideo.fullScreen ? "md" : "";
+  const hideShowConfig = !!videoItemsClass.added
+    ? "show-controls"
+    : "hidden-controls";
 
-    return (
-      <div className={`${normalOrFullScreen} ${largeOrFullScreen} `}>
-        <div className={`main-video-component`}>
-          <div
-            className="video-content"
-            onMouseOver={() => mouseOver()}
-            onMouseOut={e => ClearControls(e)}
-            onMouseMove={() => mouseMove()}
-            ref={rfClass}
-          >
-            {/*  */}
-            <div className="movie">
-              <video
-                preload="auto"
-                controls
-                className="video-item"
-                ref={rf}
-                controls={false}
-                poster={tumb}
-              >
-                <source src={video} type="video/mp4" />
-              </video>
+  return (
+    <div className={`${normalOrFullScreen} ${largeOrFullScreen} `}>
+      <div className={`main-video-component`}>
+        <div
+          className="video-content"
+          onMouseOver={() => mouseOver()}
+          onMouseOut={e => ClearControls(e)}
+          onMouseMove={() => mouseMove()}
+          ref={rfClass}
+        >
+          {/*  */}
+          <div className="movie">
+            <video
+              preload="auto"
+              controls
+              className="video-item"
+              ref={rf}
+              controls={false}
+              poster={tumb}
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          </div>
+          <div className="video-configurations" id={hideShowConfig}>
+            <div class="progress" style={divSt} onClick={e => setTime(e)}>
+              <div class="progress-item" style={divStitem}></div>
             </div>
-            <div className="video-configurations" id={hideShowConfig}>
-              <div class="progress" style={divSt} onClick={e => setTime(e)}>
-                <div class="progress-item" style={divStitem}></div>
+            <div className="video-confurations-items">
+              <div className="video-play" onClick={e => setPlayOrPause(e)}>
+                {setIcons.renderPlayOrPause()}
+                <span className="time-video">{formatTime()}</span>
               </div>
-              <div className="video-confurations-items">
-                <div className="video-play" onClick={e => setPlayOrPause(e)}>
-                  {setIcons.renderPlayOrPause()}
-                  <span className="time-video">{formatTime()}</span>
+              <div className="config">
+                <div className="vol-configuration">
+                  <FiVolume1
+                    id="video-icon"
+                    className="volume-icon"
+                    onClick={() => setMuteVolume()}
+                  ></FiVolume1>
+                  <input
+                    className="volume"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    onChange={e => setVolume(e)}
+                  ></input>
                 </div>
-                <div className="config">
-                  <div className="vol-configuration">
-                    <FiVolume1
-                      id="video-icon"
-                      className="volume-icon"
-                      onClick={() => setMuteVolume()}
-                    ></FiVolume1>
-                    <input
-                      className="volume"
-                      type="range"
-                      min="0"
-                      max="100"
-                      step="1"
-                      onChange={e => setVolume(e)}
-                    ></input>
-                  </div>
-                  <div className="video-captions">
-                    <FaRegClosedCaptioning id="video-icon"></FaRegClosedCaptioning>
-                  </div>
-                  <div className="large-screen">
-                    <MdCropLandscape
-                      id="video-icon"
-                      onClick={() => largeScreen()}
-                    ></MdCropLandscape>
-                  </div>
+                <div className="video-captions">
+                  <FaRegClosedCaptioning id="video-icon"></FaRegClosedCaptioning>
+                </div>
+                <div className="large-screen">
+                  <MdCropLandscape
+                    id="video-icon"
+                    onClick={() => largeScreen()}
+                  ></MdCropLandscape>
+                </div>
 
-                  <div className="maxi-min" onClick={e => setFullScreen(e)}>
-                    {/* <FiMaximize id="video-icon"></FiMaximize> */}
-                    {setIcons.renderFullScreenorNot()}
-                  </div>
+                <div className="maxi-min" onClick={e => setFullScreen(e)}>
+                  {/* <FiMaximize id="video-icon"></FiMaximize> */}
+                  {setIcons.renderFullScreenorNot()}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-  return <>{videoRender()}</>;
+    </div>
+  );
 }
 
 export default RENDERVIDEO;

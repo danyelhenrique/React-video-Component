@@ -1,14 +1,13 @@
 .main-video-component {
+  background-color: brown;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 480px;
-  width: 50%;
-  min-width: 100%;
+  width: 100%;
+
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+
   height: 100%;
   font-size: 0.8rem;
 }
@@ -25,8 +24,12 @@ div.md {
 
 div.main-video-normal {
   height: 495px !important;
-  width: 50%;
-  height: 100%;
+
+  width: 880px;
+}
+
+div.main-video-normal.md {
+  width: 100%;
 }
 
 div.main-video-full-screen {
@@ -37,14 +40,12 @@ div.main-video-full-screen {
   background-color: transparent;
 }
 
-div.main-video-normal.md {
-  width: 100%;
-}
 div.video-content {
   background-color: rgb(0, 0, 0);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   width: 100%;
   max-height: 100%;
   position: relative;
@@ -66,9 +67,6 @@ div.video-content div.movie .video-item {
   display: flex;
   height: 100%;
   width: 100%;
-
-  /* width:305px; */
-  /* height:160px;  */
 }
 
 div.video-content .video-configurations {
@@ -162,7 +160,6 @@ div.video-configurations .progress .progress-item {
 }
 
 input[type="range"].volume {
-  /* size of do volume */
   -webkit-appearance: none;
   background-color: #fafafa;
   width: 200px;
@@ -443,5 +440,14 @@ div.video-content div.movie:hover ~ #show-controls,
   color: #ffff;
   align-self: center;
   margin: 3px 0px 0px 5px;
-  /* background-color: red; */
+}
+
+.video-content {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.movie {
+  height: 100% !important;
+  width: 100% !important;
 }
