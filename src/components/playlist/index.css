@@ -1,5 +1,9 @@
 section.section-playlist {
-  height: 495px;
-  width: 400px;
+  /* align-self: center; */
+  /* top: 595px; */
+  height: 505px;
+  /* width: 390px; */
+  width: 100%;
   background-color: blue;
+  grid-area: playlist;
 }

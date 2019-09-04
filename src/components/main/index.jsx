@@ -1,10 +1,11 @@
 import React from "react";
 import "./index.css";
 
-export default function INDEX({ children }) {
+export default function INDEX({ children, addClassVideo }) {
+  const isLargeVideo = !!addClassVideo.isAdd ? "two" : "";
   return (
     //
 
-    <main className="main">{children}</main>
+    <main className={`main ${isLargeVideo}`}>{children}</main>
   );
 }

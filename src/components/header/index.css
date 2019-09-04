@@ -1,111 +1,151 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-header.header-content {
-  display: flex;
-  height: 55px;
+header.header {
   width: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  width: 100%;
+  height: 60px;
   flex-direction: column;
   position: fixed;
-  z-index: 10;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-header.header-content::after {
+header.header::after {
   content: "";
   box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.06);
+  box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.2);
   height: 5px;
-  z-index: 5;
+  z-index: 589;
 }
 
-header.header-content .menu {
+.header-content {
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  align-items: center;
   justify-content: space-between;
-  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  height: 55px;
+  background-color: aqua;
   background-color: rgb(255, 255, 255);
 }
+header.header#header-black {
+  background-color: #111111;
+}
+header.header#header-black::after {
+  content: "";
+  box-shadow: none;
+  height: 0px;
+  z-index: -589;
+  background-color: black;
+}
 
-header.header-content .menu .burguer-logo {
-  height: 100%;
+header.header#header-black .header-content {
+  background-color: rgb(44, 44, 44);
+}
+
+header.header#header-black .header-content #header-icon {
+  color: #ffff;
+}
+header.header#header-black .header-content .header-search input,
+header.header#header-black .header-content .header-search {
+  color: #ffff;
+  background-color: rgb(18, 18, 18);
+  border: none;
+}
+header.header#header-black .header-content .header-search button {
+  background-color: rgb(61, 61, 61);
+  border: none;
+}
+
+.header-content .header-menu-logo {
   display: flex;
   align-self: center;
   align-items: center;
-  margin-left: 25px;
-}
-header.header-content .menu .burguer-logo a.burguer {
+  width: 170px;
   height: 100%;
-  margin-right: 30px;
+  justify-content: space-around;
+}
+.header-content .header-menu-logo a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.header-content .header-menu-logo #header-icon {
+  height: 24px !important;
+  width: 24px !important;
 }
 
-header.header-content .menu .burguer-logo .logo a {
-  height: 100%;
-}
-header.header-content .menu .burguer-logo .logo img {
+.header-content .header-menu-logo img {
   height: 18px;
 }
 
-header.header-content .header-item-search {
-  flex: 1;
+.header-content .header-search {
   display: flex;
-  margin-left: 220px;
+  width: 600px;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 2.7px;
 }
-
-header.header-content .header-item-search form {
-  border: 1px solid #cccccc;
-  display: flex;
-  height: 30px;
-  width: 650px;
-}
-
-header.header-content .header-item-search form input.header-input {
-  padding: 5px;
-  display: flex;
+.header-content .header-search input {
   width: 100%;
+  padding: 5px;
   border: none;
-  border-right: 1px solid #cccccc;
   font-weight: 500;
+  font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
   color: #000000;
-  background-color: transparent;
+  white-space: initial;
+  outline: 1.4 solid rgb(41, 121, 255);
+  border-right: 1px solid rgb(189, 189, 189);
 }
-
-header.header-content .header-item-search form .header-input-button {
-  height: 30px;
-  width: 61px;
-}
-
-header.header-content .header-item-search form .header-input-button button {
-  padding: 20px;
-  padding: 5px 20px;
-  width: 60px;
-  height: 30px;
+.header-content .header-search button {
+  text-align: center;
+  width: 15%;
   border: none;
   background-color: rgb(240, 240, 240);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.header-icon {
+  color: rgb(144, 144, 144);
 }
 
-.header-user-items {
+.header-user-area {
+  width: 250px;
+  height: 100%;
   display: flex;
   align-items: center;
-  align-content: center;
-  width: 300px;
-  justify-content: flex-end;
+}
+#header-icon {
+  color: rgb(144, 144, 144);
+}
+.header-user-area a {
   height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 10px 0 0;
+}
+.header-user-area a #header-icon {
+  text-decoration: none;
   align-self: center;
+  height: 22px !important;
+  width: 22px !important;
+  margin: 0px;
 }
 
-.header-user-items a {
-  height: 50%;
-  margin: 0 5px 0 5px;
-  padding: 0 10px 0 10px;
+.user {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
-.header-user-items a img {
-  /*  */
-}
-
-.header-user-menu-dropdown {
-  margin-right: 5px;
-  cursor: pointer;
+.user img {
+  height: 70%;
+  width: 70%;
+  border-radius: 50%;
 }

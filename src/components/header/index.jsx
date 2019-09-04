@@ -1,62 +1,55 @@
 import React from "react";
-import logo from "../../assets/logo.png";
-import burguer from "../../assets/burguerMenu.svg";
-import notifications from "../../assets/notifications.svg";
-import view from "../../assets/view.svg";
-import people from "../../assets/people.svg";
+import LighLogo from "../../assets/logo-light.png";
+import DarkLogo from "../../assets/logo-dark.png";
 
 import "./index.css";
+import { TiThSmall } from "react-icons/ti";
+import { TiArrowForwardOutline } from "react-icons/ti";
 
-const index = ({ menu, header }) => {
-  function check() {
-    if (!!menu.homePage) {
-      header({ homePage: true, smallMenu: !menu.smallMenu, display: true });
-    }
-    if (!menu.homePage) {
-      header({ homePage: false, smallMenu: false, display: !menu.display });
-    }
-  }
+import { MdNotificationsNone } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
+import { MdSearch } from "react-icons/md";
+
+const index = ({ addClassVideo }) => {
+  const URL = "https://i.pravatar.cc/300";
+  const isVideoLarge = addClassVideo.isAdd ? "header-black" : "";
+  const changeLogo = !addClassVideo.isAdd ? LighLogo : DarkLogo;
 
   return (
-    <header className="header-content">
-      <div className="menu">
-        <div className="burguer-logo">
-          <div className="menu-burguer">
-            <a href="#/" className="burguer" onClick={() => check()}>
-              <img src={burguer} alt="burguer" />
-            </a>
-          </div>
-
-          <div className="logo">
-            <a href="#/">
-              <img src={logo} alt="logo" />
-            </a>
-          </div>
-        </div>
-        <div className="header-item-search">
-          <form action="#/" method="get">
-            <input
-              className="header-input"
-              type="text"
-              placeholder="Pequisar"
-            />
-            <div className="header-input-button">
-              <button type="submit">
-                <i className="fa fa-search" />
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="header-user-items">
-          <a href="#/">
-            <img src={view} alt="" />
+    <header className="header" id={isVideoLarge}>
+      <div className="header-content">
+        <div className="header-menu-logo">
+          <a href="#/" id="header-link-item">
+            <MdMenu id="header-icon" />
           </a>
-          <a href="#/" className="notifications">
-            <img src={notifications} alt="" />
+          <a href="#/" id="header-link-item">
+            <img src={changeLogo} alt="logo" />
           </a>
-          <div className="header-user-menu-dropdown">
-            <img src={people} alt="" />
-          </div>
+        </div>
+        <div className="header-search">
+          <input
+            type="text"
+            name=""
+            id="header-search"
+            placeholder="Pesquisar"
+          />
+          <button type="submit">
+            <MdSearch id="header-icon" />
+          </button>
+        </div>
+        <div className="header-user-area">
+          <a href="#/" id="header-link-item">
+            <TiThSmall id="header-icon" />
+          </a>
+          <a href="#/" id="header-link-item">
+            <TiArrowForwardOutline id="header-icon" />
+          </a>
+          <a href="#/" id="header-link-item">
+            <MdNotificationsNone id="header-icon" />
+          </a>
+          <a href="#/" id="header-link-item" className="user">
+            <img src={URL} alt="avatar" />
+          </a>
         </div>
       </div>
     </header>

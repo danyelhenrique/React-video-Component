@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import HEADER from "./components/header";
@@ -8,15 +8,16 @@ import PLAYLIST from "./components/playlist";
 import BODY from "./components/body";
 import VIDEO from "./components/teste";
 
-function App() {
+function App(props) {
+  const [addClassVideo, setClassVideo] = useState({ isAdd: false });
+  console.log(props);
   return (
     <div className="App">
-      <HEADER></HEADER>
-      <MAIN>
-        {/* <VIDEO></VIDEO> */}
-        <RENDERVIDEO />
-        {/* <PLAYLIST /> */}
-        {/* <BODY /> */}
+      <HEADER addClassVideo={addClassVideo} />
+      <MAIN addClassVideo={addClassVideo}>
+        <VIDEO setClassVideo={setClassVideo} addClassVideo={addClassVideo} />
+        <PLAYLIST />
+        <BODY />
       </MAIN>
     </div>
   );
