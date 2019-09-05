@@ -13,16 +13,14 @@ body,
   /* width: 100vw; */
   box-sizing: border-box;
   font-family: var(--font-family-default);
+  background-color: rgb(249, 249, 249);
 }
 
 .App {
   height: 100%;
   width: 100%;
-  /* min-height: 100%; */
   box-sizing: border-box;
-
   font-size: 0.9rem;
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: center;

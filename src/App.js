@@ -16,6 +16,10 @@ function App(props) {
       <HEADER addClassVideo={addClassVideo} />
       <MAIN addClassVideo={addClassVideo}>
         <VIDEO setClassVideo={setClassVideo} addClassVideo={addClassVideo} />
+        {/* <RENDERVIDEO
+          setClassVideo={setClassVideo}
+          addClassVideo={addClassVideo}
+        /> */}
         <PLAYLIST />
         <BODY />
       </MAIN>

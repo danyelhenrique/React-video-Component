@@ -19,7 +19,6 @@
   width: 880px;
   min-width: 435px;
   margin: 80px auto;
-
   position: relative;
   flex-direction: column;
   background-color: rgb(0, 0, 0);
@@ -32,6 +31,7 @@
   z-index: 800;
   transition: width 0.2s, height 0.2s ease-in-out;
   background-color: transparent;
+  grid-area: large;
 }
 
 .video-normal.normal.md {
@@ -141,7 +141,7 @@ div.video-configurations .progress .progress-item {
   position: absolute;
 }
 
-input[type="range"].volume {
+ input[type="range"].volume {
   -webkit-appearance: none;
   background-color: #fafafa;
   width: 200px;
@@ -157,7 +157,7 @@ input[type="range"].volume::-webkit-slider-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-}
+} 
 
 div.video-configurations .video-confurations-items .config .vol-configuration {
   display: -webkit-box;
@@ -169,7 +169,7 @@ div.video-configurations .video-confurations-items .config .vol-configuration {
   flex-direction: row-reverse;
 }
 
-div.video-configurations
+ div.video-configurations
   .video-confurations-items
   .config
   .vol-configuration
@@ -186,16 +186,16 @@ div.video-configurations
   animation-name: volume;
   animation-duration: 4s;
   animation-iteration-count: infinite;
-}
+} 
 
-@keyframes volume {
+ @keyframes volume {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 1;
   }
-}
+} 
 
 .video-normal.normal div.video-configurations#hidden-controls {
   opacity: 0;
@@ -430,5 +430,4 @@ div.movie:hover ~ #show-controls,
 .movie {
   height: 100% !important;
   width: 100% !important;
-}
- */
+} */
