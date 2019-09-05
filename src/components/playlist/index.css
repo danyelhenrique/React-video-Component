@@ -1,9 +1,19 @@
 section.section-playlist {
-  /* align-self: center; */
-  /* top: 595px; */
-  height: 505px;
-  /* width: 390px; */
-  width: 100%;
-  background-color: blue;
+  height: 495px;
+  /* background-color: blue; */
   grid-area: playlist;
+  margin-right: var(--margin-left-right);
+  border: var(--global--border);
+  overflow: hidden;
+}
+
+#abc {
+  overflow: scroll;
+  height: 100%;
+}
+
+.playlist-items {
+  /* height: 100%; */
+  overflow: scroll;
+  height: 100%;
 }

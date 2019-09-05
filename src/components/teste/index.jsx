@@ -161,7 +161,6 @@ export default function INDEX({ setClassVideo, addClassVideo }) {
       <div className="video-section-item ">
         <video src={video} id="video-item" onTimeUpdate={e => progressBar(e)} />
       </div>
-
       <div className="controls">
         <div className="progress-bar" onClick={e => changeCurrentTime(e)}>
           <div className="progress-bar-progress" style={widt}></div>

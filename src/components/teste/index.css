@@ -5,8 +5,7 @@
   min-width: 435px;
   grid-area: video;
   position: relative;
-  /* margin-left: 40px; */
-  /* flex-direction: column; */
+  margin-left: var(--margin-left-right);
 }
 
 .video-section-item {
@@ -25,6 +24,7 @@
   grid-area: large;
   position: relative;
   top: 0px;
+  margin-left: 0px;
 }
 .section-video.large .video-section-item {
   height: 100% !important;
@@ -36,28 +36,9 @@
   width: 100% !important;
   box-sizing: border-box !important;
   object-fit: contain !important;
-  box-sizing: border-box !important;
   transform: none !important;
   position: absolute !important;
 }
-
-/* .section-video.full .video-section-item {
-  height: 100% !important;
-  width: 100% !important;
-}
-
-.section-video.full .video-section-item video {
-  top: 0px !important;
-  right: 0px !important;
-  bottom: 0px !important;
-  left: 0px !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
-  height: 100% !important;
-  transform: none !important;
-  margin: 0px !important;
-  position: absolute;
-} */
 
 .section-video .controls {
   display: flex;
@@ -67,7 +48,6 @@
   bottom: 0px !important;
   left: 0 !important;
   cursor: pointer;
-  z-index: 99999 !important;
   background-color: transparent;
 }
 
@@ -80,7 +60,6 @@
 .progress-bar-progress {
   height: 5px;
   z-index: 55;
-  background-color: red;
 }
 
 .section-video .controls .controls-config {
@@ -126,9 +105,7 @@
 /*  */
 input[type="range"].volume {
   -webkit-appearance: none;
-  background-color: #fafafa;
-  width: 200px;
-  width: 150px;
+  width: 100px;
   height: 4px;
   outline: none;
   align-self: center;
@@ -180,4 +157,187 @@ div:fullscreen {
 }
 :fullscreen .controls {
   position: absolute !important;
+}
+
+.progress-bar .progress-bar-progress {
+  background: -o-linear-gradient(
+    315deg,
+    #d50000 0%,
+    #b71c1c 50%,
+    #d50000 51%,
+    #d50000 71%,
+    #d50000 100%
+  );
+  background: linear-gradient(
+    135deg,
+    #d50000 0%,
+    #b71c1c 50%,
+    #d50000 51%,
+    #d50000 71%,
+    #d50000 100%
+  );
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  -webkit-animation-name: progressive;
+  animation-name: progressive;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+.progress-bar-progress:after {
+  background: -o-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 40px 40px;
+  animation-name: progress;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: none;
+  animation-timing-function: linear;
+  -webkit-animation-name: progress;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: none;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: progress;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: none;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: progress;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: none;
+  -ms-animation-timing-function: linear;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.4s ease 0s;
+  -o-transition: width 0.4s ease 0s;
+  transition: width 0.4s ease 0s;
+  width: 100%;
+  -webkit-transition-property: width;
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-delay: 0;
+  -moz-transition-property: width;
+  -moz-transition-duration: 0.4s;
+  -moz-transition-delay: 0;
+  -o-transition-property: width;
+  -o-transition-duration: 0.4s;
+  -o-transition-delay: 0;
+  -ms-transition-property: width;
+  -ms-transition-duration: 0.4s;
+  -ms-transition-delay: 0;
+  transition-property: width;
+  transition-duration: 0.4s;
+  transition-delay: 0;
+}
+.progress-bar:after {
+  background: -o-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.1) 25%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.1) 25%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 40px 40px;
+  animation-name: progress;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: none;
+  animation-timing-function: linear;
+  -webkit-animation-name: progress;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: none;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: progress;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: none;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: progress;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: none;
+  -ms-animation-timing-function: linear;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.4s ease 0s;
+  -o-transition: width 0.4s ease 0s;
+  transition: width 0.4s ease 0s;
+  width: 100%;
+  -webkit-transition-property: width;
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-delay: 0;
+  -moz-transition-property: width;
+  -moz-transition-duration: 0.4s;
+  -moz-transition-delay: 0;
+  -o-transition-property: width;
+  -o-transition-duration: 0.4s;
+  -o-transition-delay: 0;
+  -ms-transition-property: width;
+  -ms-transition-duration: 0.4s;
+  -ms-transition-delay: 0;
+  transition-property: width;
+  transition-duration: 0.4s;
+  transition-delay: 0;
 }

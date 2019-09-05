@@ -10,8 +10,7 @@ main.main {
   grid-template-areas:
     "video playlist "
     "body body ";
-  justify-content: center;
-  align-self: center;
+  grid-row-gap: 5px;
 }
 
 main.main.two {
@@ -21,6 +20,6 @@ main.main.two {
   grid-template-areas:
     "large large"
     " body playlist";
-  grid-gap: 0px;
+  grid-gap: 10px;
   top: 60px;
 }

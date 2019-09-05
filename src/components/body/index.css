@@ -4,4 +4,5 @@
   background-color: chocolate;
   display: flex;
   grid-area: body;
+  margin-left: var(--margin-left-right);
 }

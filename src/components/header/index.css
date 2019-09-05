@@ -8,7 +8,7 @@ header.header {
   height: 60px;
   flex-direction: column;
   position: fixed;
-  z-index: 9998;
+  z-index: 100;
   top: 0;
   left: 0;
   right: 0;
@@ -16,8 +16,7 @@ header.header {
 
 header.header::after {
   content: "";
-  box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.06);
-  box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.2);
+  box-shadow: var(--shadow--header);
   height: 5px;
   z-index: 589;
 }
@@ -29,8 +28,8 @@ header.header::after {
   justify-items: center;
   text-align: center;
   height: 55px;
-  background-color: aqua;
   background-color: rgb(255, 255, 255);
+  z-index: 100;
 }
 header.header#header-black {
   background-color: #111111;
@@ -85,7 +84,7 @@ header.header#header-black .header-content .header-search button {
 .header-content .header-search {
   display: flex;
   width: 600px;
-  border: 1px solid rgb(189, 189, 189);
+  border: var(--global--border);
   border-radius: 2.7px;
 }
 .header-content .header-search input {
@@ -98,7 +97,7 @@ header.header#header-black .header-content .header-search button {
   color: #000000;
   white-space: initial;
   outline: 1.4 solid rgb(41, 121, 255);
-  border-right: 1px solid rgb(189, 189, 189);
+  border-right: var(--global--border);
 }
 .header-content .header-search button {
   text-align: center;
@@ -108,9 +107,6 @@ header.header#header-black .header-content .header-search button {
   display: flex;
   justify-content: center;
   cursor: pointer;
-}
-.header-icon {
-  color: rgb(144, 144, 144);
 }
 
 .header-user-area {
