@@ -1,0 +1,46 @@
+.list-video-comments {
+  display: flex;
+  font-size: 1rem;
+  margin-top: 40px;
+  font-family: var(--font-family-default);
+  font-size: 0.9rem;
+}
+
+.list-video-comments-name-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.list-video-comments .avatar-comment {
+  height: var(--global-avatar-size);
+  width: var(--global-avatar-size);
+}
+
+.list-video-comments .avatar-comment img {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--global-avatar-border);
+}
+
+.list-video-comments .list-video-comments-name-user {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 0px 15px;
+}
+
+.list-video-comments .list-video-comments-name-user .user-name-date {
+  display: flex;
+  line-height: 10px;
+  align-items: center;
+}
+.list-video-comments .list-video-comments-name-user .user-name-date > h6 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+}
+.list-video-comments .list-video-comments-name-user .user-name-date > p {
+  margin: 0;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  color: #606060;
+}

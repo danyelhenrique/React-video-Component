@@ -10,6 +10,7 @@ import { MdNotificationsNone } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import { MdSearch } from "react-icons/md";
 
+
 const index = ({ addClassVideo }) => {
   const URL = "https://i.pravatar.cc/300";
   const isVideoLarge = addClassVideo.isAdd ? "header-black" : "";

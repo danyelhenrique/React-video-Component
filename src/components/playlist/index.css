@@ -1,19 +1,16 @@
 section.section-playlist {
   height: 495px;
-  /* background-color: blue; */
   grid-area: playlist;
   margin-right: var(--margin-left-right);
   border: var(--global--border);
   overflow: hidden;
 }
-
-#abc {
-  overflow: scroll;
-  height: 100%;
+section.section-playlist#hidden {
+  height: 80px;
+  overflow: hidden;
 }
 
 .playlist-items {
-  /* height: 100%; */
   overflow: scroll;
   height: 100%;
 }
