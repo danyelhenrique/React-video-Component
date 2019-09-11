@@ -1,29 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
+import { async } from "q";
 
-//FAKE DATE TYPES FOR TESTE
-const date = new Date();
-const day = date.getDate();
-//EDN
-//
-export default function index({ AllComeents }) {
-  console.log(AllComeents, "Debug");
+// const URL = "https://i.pravatar.cc/300";
 
+const URL = "http://localhost:3001/allComments";
+
+export default function INDEX({ AllComeents, SendCOmment }) {
+  const [comments, setcommets] = useState();
+  const [load, setload] = useState({ isLoad: false });
+
+  useEffect(() => {
+    async function GetComments() {
+      const GetData = await fetch(URL);
+      const Json = await GetData.json();
+      await setcommets(Json);
+      setload({ isLoad: true });
+    }
+    GetComments();
+  }, []);
+
+  useEffect(() => {
+    function UpdateComments() {
+      setInterval(async () => {
+        const GetData = await fetch(URL);
+        const Json = await GetData.json();
+        await setcommets(Json);
+      }, 50000);
+    }
+    UpdateComments();
+  });
+  // console.log("comments", comments);
   function handleCommentsArea() {
-    return AllComeents.data.map((elem, index) => (
-      <div className="list-video-comments">
-        <div className="avatar-comment">
-          <img src={elem.avatar} alt="" />
-        </div>
-        <div className="list-video-comments-name-user">
-          <div className="user-name-date">
-            <h6>{elem.first_name}</h6>
-            <p>{day} dias</p>
+    if (!!load.isLoad) {
+      return comments.map((ele, index) => (
+        <div className="list-video-comments">
+          <div className="avatar-comment">
+            <img src={URL} alt="" />
           </div>
-          {/* <span>{comment[index]}</span> */}
+          <div className="list-video-comments-name-user">
+            <div className="user-name-date">
+              <h6>{ele.name}</h6>
+              <p>{ele.date} days</p>
+            </div>
+            <span>{ele.comment}</span>
+          </div>
         </div>
-      </div>
-    ));
+      ));
+    } else {
+      return <h1>Loading</h1>;
+    }
   }
 
   return <div>{handleCommentsArea()}</div>;

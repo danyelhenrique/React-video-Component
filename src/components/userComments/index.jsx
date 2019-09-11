@@ -2,32 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 
 import VIDEOCOMMENTS from "../videocomments";
-import { async } from "q";
 
 //FAKE DATE TYPES FOR TESTE
-const URL = "https://i.pravatar.cc/300";
+// const URL = "https://i.pravatar.cc/300";
+const URL = "http://localhost:3001/allComments";
 const USER = "example-user";
-// const DATE = new Date();
+const date = new Date();
+const day = date.getDate();
 
-//END
-//
 export default function INDEX() {
-  useEffect(() => {
-    async function LOGUSER() {
-      const GetData = await fetch("https://reqres.in/api/users?page=2");
-      const Json = await GetData.json();
-      const Resp = await Json;
-
-      const Set = await setAllComeents(Resp);
-      setAllDataCommentary({ check: true });
-    }
-    LOGUSER();
-  }, []);
   const [addClassInput, setAddClassInput] = useState({ isCommenting: false });
   const [userComment, setuserComment] = useState({ comment: null });
-  //
-  const [AllDataCommentary, setAllDataCommentary] = useState({ check: false });
-  const [AllComeents, setAllComeents] = useState();
 
   function addClassInputOnlcik() {
     setAddClassInput({ isCommenting: true });
@@ -42,17 +27,28 @@ export default function INDEX() {
     setuserComment({ comment });
   }
   async function sendUserComment(e) {
-    const comment = await userComment.comment;
+    const comment = userComment.comment;
+    const SendData = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: "USERTESTE",
+        comment: comment,
+        date: day
+      })
+    };
+
+    await fetch(URL, SendData);
 
     setuserComment({ comment: "" });
     setAddClassInput({ isCommenting: false });
   }
 
   function renderVideoComments() {
-    const check = AllDataCommentary.check;
-    if (check) {
-      return <VIDEOCOMMENTS avatar={URL} AllComeents={AllComeents} />;
-    }
+    return <VIDEOCOMMENTS avatar={URL} />;
   }
 
   const setClassInput = (!!addClassInput.isCommenting && "commenting") || "";
