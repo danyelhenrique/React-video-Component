@@ -4,6 +4,7 @@
   margin-top: 40px;
   font-family: var(--font-family-default);
   font-size: 0.9rem;
+  /* margin-bottom: 20px; */
 }
 
 .list-video-comments-name-user {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import { async } from "q";
-
-// const URL = "https://i.pravatar.cc/300";
 
 const URL = "http://localhost:3001/allComments";
+const AVATAR = "https://i.pravatar.cc/300";
 
-export default function INDEX({ AllComeents, SendCOmment }) {
+export default function INDEX({ onlocal, setOnlocal }) {
   const [comments, setcommets] = useState();
   const [load, setload] = useState({ isLoad: false });
 
@@ -19,24 +17,51 @@ export default function INDEX({ AllComeents, SendCOmment }) {
     }
     GetComments();
   }, []);
-
+  //
   useEffect(() => {
-    function UpdateComments() {
-      setInterval(async () => {
-        const GetData = await fetch(URL);
-        const Json = await GetData.json();
-        await setcommets(Json);
-      }, 50000);
-    }
-    UpdateComments();
+    // CHECK NEW COMMENTS ON DATABASE AFTER 1.5 MINUTES
+    // AND REMOVE TEMPORARY COMMENT USER FROM LOCALSTORAGE
+    // function UpdateComments() {
+    //   setInterval(async () => {
+    //     const GetData = await fetch(URL);
+    //     const Json = await GetData.json();
+    //     await setcommets(Json);
+    //     if (localStorage.hasOwnProperty("@user-commet-temp")) {
+    //       localStorage.removeItem("@user-commet-temp");
+    //     }
+    //   }, 90000);
+    // }
+    // UpdateComments();
   });
-  // console.log("comments", comments);
+
+  const getItemLocalStorage = localStorage.getItem("@user-commet-temp");
+  const StorageUser = JSON.parse(getItemLocalStorage);
+
+  function handleCommetUserLocalHistorage() {
+    if (!!onlocal.isOn) {
+      return (
+        <div className="list-video-comments">
+          <div className="avatar-comment">
+            <img src={AVATAR} alt="avatar" />
+          </div>
+          <div className="list-video-comments-name-user">
+            <div className="user-name-date">
+              <h6>{StorageUser.name}</h6>
+              <p>{StorageUser.date} days</p>
+            </div>
+            <span>{StorageUser.comment}</span>
+          </div>
+        </div>
+      );
+    }
+  }
+
   function handleCommentsArea() {
     if (!!load.isLoad) {
       return comments.map((ele, index) => (
         <div className="list-video-comments">
           <div className="avatar-comment">
-            <img src={URL} alt="" />
+            <img src={AVATAR} alt="avatar" />
           </div>
           <div className="list-video-comments-name-user">
             <div className="user-name-date">
@@ -48,9 +73,14 @@ export default function INDEX({ AllComeents, SendCOmment }) {
         </div>
       ));
     } else {
-      return <h1>Loading</h1>;
+      return <div></div>;
     }
   }
 
-  return <div>{handleCommentsArea()}</div>;
+  return (
+    <div>
+      {handleCommetUserLocalHistorage()}
+      {handleCommentsArea()}
+    </div>
+  );
 }

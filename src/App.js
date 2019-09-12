@@ -6,6 +6,7 @@ import MAIN from "./components/main";
 import PLAYLIST from "./components/playlist";
 import BODY from "./components/body";
 import VIDEO from "./components/teste";
+import MENUSIDEBAR from "./components/menu";
 
 function App(props) {
   const [addClassVideo, setClassVideo] = useState({ isAdd: false });
@@ -13,6 +14,7 @@ function App(props) {
   return (
     <div className="App">
       <HEADER addClassVideo={addClassVideo} />
+      <MENUSIDEBAR />
       <MAIN addClassVideo={addClassVideo}>
         <VIDEO setClassVideo={setClassVideo} addClassVideo={addClassVideo} />
         <PLAYLIST />

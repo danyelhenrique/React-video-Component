@@ -1,0 +1,40 @@
+.sidebar-subscription-items {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 8px;
+  /* overflow: scroll; */
+}
+
+.sidebar-subscription-items h3 {
+  color: rgb(96, 96, 105);
+  padding-left: 15px;
+  font-size: 0.9rem;
+}
+
+.sidebar-subscription-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-subscription-inscriptions {
+  display: flex;
+  align-items: center;
+  padding: 9px 0;
+  padding-left: 15px;
+  cursor: pointer;
+}
+.sidebar-subscription-inscriptions:hover {
+  background-color: rgba(230, 225, 225, 0.5);
+}
+.sidebar-subscription-inscriptions span {
+  display: flex;
+  padding-left: 22px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.sidebar-subscription-inscriptions img {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}

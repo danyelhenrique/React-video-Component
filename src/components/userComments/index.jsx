@@ -4,15 +4,15 @@ import "./index.css";
 import VIDEOCOMMENTS from "../videocomments";
 
 //FAKE DATE TYPES FOR TESTE
-// const URL = "https://i.pravatar.cc/300";
+const AVATAR = "https://i.pravatar.cc/300";
 const URL = "http://localhost:3001/allComments";
-const USER = "example-user";
 const date = new Date();
 const day = date.getDate();
 
 export default function INDEX() {
   const [addClassInput, setAddClassInput] = useState({ isCommenting: false });
   const [userComment, setuserComment] = useState({ comment: null });
+  const [onlocal, setOnlocal] = useState({ isOn: false });
 
   function addClassInputOnlcik() {
     setAddClassInput({ isCommenting: true });
@@ -28,6 +28,13 @@ export default function INDEX() {
   }
   async function sendUserComment(e) {
     const comment = userComment.comment;
+    const items = JSON.stringify({
+      name: "USERTESTE",
+      comment: comment,
+      date: day
+    });
+    localStorage.setItem("@user-commet-temp", items);
+    setOnlocal({ isOn: true });
     const SendData = {
       method: "POST",
       headers: {
@@ -48,7 +55,7 @@ export default function INDEX() {
   }
 
   function renderVideoComments() {
-    return <VIDEOCOMMENTS avatar={URL} />;
+    return <VIDEOCOMMENTS setOnlocal={setOnlocal} onlocal={onlocal} />;
   }
 
   const setClassInput = (!!addClassInput.isCommenting && "commenting") || "";
@@ -58,7 +65,7 @@ export default function INDEX() {
       <h5>4.178 comments</h5>
       <div className="video-body-comment-user-area">
         <div className="comments-user-area-avatar">
-          <img src={URL} alt="avatar" />
+          <img src={AVATAR} alt="avatar" />
         </div>
         <div
           className="video-body-input-user-area"
