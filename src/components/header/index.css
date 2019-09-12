@@ -36,7 +36,7 @@ header.header#header-black::after {
   content: "";
   box-shadow: none;
   height: 0px;
-  z-index: -589;
+  /* z-index: -589; */
   background-color: black;
 }
 
@@ -142,4 +142,10 @@ header.header#header-black .header-content .header-search button {
   height: 70%;
   width: 70%;
   border-radius: 50%;
+}
+
+.header-link-item {
+  /* display: none; */
+  cursor: none;
+  background-color: red;
 }

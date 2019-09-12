@@ -1,27 +1,19 @@
 import React from "react";
 
 import "./index.css";
-import LOGO from "../../assets/logo-light.png";
 
 import SIDEBARITEMS from "./sidebarItems";
 import PLAYLISTUSER from "./playlistUser";
 import USERSUBSCRIPTION from "./UserSubscription";
+import HEADERPLAYLIST from "./header";
 
-import { MdMenu } from "react-icons/md";
-
-export default function INDEX() {
+export default function INDEX({ showMenu, setShowMenu }) {
+  const MenuActive = !!showMenu.isShow ? "hidden-sidebar" : "";
   return (
-    <sidebar className="main-sidebar">
-      <div className="active"></div>
+    <sidebar className="main-sidebar" id={MenuActive}>
+      <div className="main-sidebar-active-menu"></div>
+      <HEADERPLAYLIST showMenu={showMenu} setShowMenu={setShowMenu} />
       <div className="main-sidebar-content">
-        <div className="sidebar-header">
-          <a href="#/" className="sidebar-header-burguer">
-            <MdMenu id="sidebar-icon" />
-          </a>
-          <a href="#/" className="sidebar-header-logo">
-            <img src={LOGO} alt="logo" />
-          </a>
-        </div>
         <SIDEBARITEMS />
         <PLAYLISTUSER />
         <USERSUBSCRIPTION />

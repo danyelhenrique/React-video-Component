@@ -10,17 +10,20 @@ import { MdNotificationsNone } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import { MdSearch } from "react-icons/md";
 
-
-const index = ({ addClassVideo }) => {
+const index = ({ addClassVideo, showMenu, setShowMenu }) => {
   const URL = "https://i.pravatar.cc/300";
   const isVideoLarge = addClassVideo.isAdd ? "header-black" : "";
   const changeLogo = !addClassVideo.isAdd ? LighLogo : DarkLogo;
+
+  function ShowMenu() {
+    setShowMenu({ isShow: !showMenu.isShow });
+  }
 
   return (
     <header className="header" id={isVideoLarge}>
       <div className="header-content">
         <div className="header-menu-logo">
-          <a href="#/" id="header-link-item">
+          <a href="#/" id="header-link-item" onClick={() => ShowMenu()}>
             <MdMenu id="header-icon" />
           </a>
           <a href="#/" id="header-link-item">

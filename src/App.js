@@ -10,11 +10,17 @@ import MENUSIDEBAR from "./components/menu";
 
 function App(props) {
   const [addClassVideo, setClassVideo] = useState({ isAdd: false });
-  console.log(props);
+  const [showMenu, setShowMenu] = useState({ isShow: false });
+  const MenuActive = !showMenu.isShow ? "hidden-on-show-menu" : "";
+
   return (
-    <div className="App">
-      <HEADER addClassVideo={addClassVideo} />
-      <MENUSIDEBAR />
+    <div className="App" id={MenuActive}>
+      <HEADER
+        addClassVideo={addClassVideo}
+        setShowMenu={setShowMenu}
+        showMenu={showMenu}
+      />
+      <MENUSIDEBAR showMenu={showMenu} setShowMenu={setShowMenu} />
       <MAIN addClassVideo={addClassVideo}>
         <VIDEO setClassVideo={setClassVideo} addClassVideo={addClassVideo} />
         <PLAYLIST />
