@@ -1,4 +1,9 @@
 import React from "react";
+import { toggleMenu } from "../../store/actions/sidebar";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+//
 import LighLogo from "../../assets/logo-light.png";
 import DarkLogo from "../../assets/logo-dark.png";
 
@@ -10,13 +15,15 @@ import { MdNotificationsNone } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import { MdSearch } from "react-icons/md";
 
-const index = ({ addClassVideo, showMenu, setShowMenu }) => {
+const Header = props => {
   const URL = "https://i.pravatar.cc/300";
-  const isVideoLarge = addClassVideo.isAdd ? "header-black" : "";
-  const changeLogo = !addClassVideo.isAdd ? LighLogo : DarkLogo;
+  // const isVideoLarge = addClassVideo.isAdd ? "header-black" : "";
+  // const changeLogo = !addClassVideo.isAdd ? LighLogo : DarkLogo;
+  const isVideoLarge = "";
+  const changeLogo = LighLogo;
 
   function ShowMenu() {
-    setShowMenu({ isShow: !showMenu.isShow });
+    props.toggleMenu();
   }
 
   return (
@@ -60,4 +67,14 @@ const index = ({ addClassVideo, showMenu, setShowMenu }) => {
   );
 };
 
-export default index;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ toggleMenu }, dispatch);
+
+const mapStateToProps = state => ({
+  MenuState: state.sidebar
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

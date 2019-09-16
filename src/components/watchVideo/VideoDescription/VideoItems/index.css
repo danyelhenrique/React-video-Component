@@ -1,0 +1,72 @@
+.video-description {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  width: 100%;
+  font-family: var(--font-family-default);
+}
+
+.video-description .video-description-config-channel {
+  display: flex;
+  flex-direction: row;
+  height: 51px;
+}
+
+.video-description-config-channel-owner-video {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  justify-content: space-between;
+}
+.video-description-config-channel-owner-video .thumb-user {
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+.video-description-config-channel-owner-video .thumb-user .thumb-user-img {
+  height: 45px;
+  width: 45px;
+}
+.video-description-config-channel-owner-video .thumb-user .thumb-user-img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.video-description-config-channel-owner-video .thumb-user-config {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 15px;
+}
+.video-description-config-channel-owner-video .thumb-user-config span {
+  color: var(--global-secondary-color);
+  font-weight: 500;
+}
+.video-description-config-channel-owner-video .notifications-subscription {
+  display: flex;
+  justify-content: center;
+}
+.video-description-config-channel-owner-video
+  .notifications-subscription
+  button {
+  border: none;
+  padding: 0 35px;
+  margin-right: 15px;
+  background-color: var(--global--icon-color);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 36px;
+  display: flex;
+  align-self: center;
+  color: #606060;
+  border-radius: 1.5px;
+  cursor: pointer;
+}
+.notifications-subscription #icon-notification-subscriptions {
+  display: flex;
+  width: var(--global-size-icons);
+  height: var(--global-size-icons);
+  padding: 8px;
+  align-self: center;
+  color: var(--global--icon-color);
+  cursor: pointer;
+}

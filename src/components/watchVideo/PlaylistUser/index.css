@@ -1,0 +1,40 @@
+section.section-playlist {
+  height: 495px;
+  width: 368px;
+  margin-right: var(--margin-left-right);
+  border: var(--global--border);
+  grid-area: playlist;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+section.section-playlist#hidden,
+section.section-playlist#hidden .section-playlist-content {
+  height: 80px;
+}
+
+section.section-playlist .section-playlist-content {
+  overflow: hidden;
+  height: 495px;
+}
+
+section.section-playlist .section-playlist-content .playlist-items {
+  overflow: scroll;
+  height: 100%;
+}
+
+.playlist-items::-webkit-scrollbar {
+  width: 10px !important;
+  height: 80px !important;
+}
+
+.playlist-items::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+.playlist-items::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  background-color: #c1c1c1;
+}
+.playlist-items::-webkit-scrollbar-thumb:hover {
+  background-color: #ddd9d9;
+}

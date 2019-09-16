@@ -1,6 +1,6 @@
 header.header {
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--global-background);
   display: flex;
   width: 100%;
   height: 60px;
@@ -16,7 +16,7 @@ header.header::after {
   content: "";
   box-shadow: var(--shadow--header);
   height: 5px;
-  z-index: 589;
+  z-index: 99;
 }
 
 .header-content {
@@ -32,24 +32,17 @@ header.header::after {
 header.header#header-black {
   background-color: #111111;
 }
-header.header#header-black::after {
-  content: "";
-  box-shadow: none;
-  height: 0px;
-  /* z-index: -589; */
-  background-color: black;
-}
 
 header.header#header-black .header-content {
   background-color: rgb(44, 44, 44);
 }
 
 header.header#header-black .header-content #header-icon {
-  color: #ffff;
+  color: rgb(255, 255, 255);
 }
 header.header#header-black .header-content .header-search input,
 header.header#header-black .header-content .header-search {
-  color: #ffff;
+  color: rgb(255, 255, 255);
   background-color: rgb(18, 18, 18);
   border: none;
 }
@@ -142,10 +135,4 @@ header.header#header-black .header-content .header-search button {
   height: 70%;
   width: 70%;
   border-radius: 50%;
-}
-
-.header-link-item {
-  /* display: none; */
-  cursor: none;
-  background-color: red;
 }

@@ -1,28 +1,27 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
-/* @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap"); */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
-/* @import url("https://fonts.googleapis.com/css?family=Montserrat:500,600&display=swap"); */
 :root {
-  /* --font-family-default: "Montserrat", sans-serif; */
   --font-family-default: "Roboto", sans-serif;
   --margin-left-right: 30px;
   --shadow--header: inset 0px 4px 8px -3px rgba(17, 17, 17, 0.2);
   --playlist-text-color: rgb(61, 61, 61);
-  --global--border: 1px solid rgb(189, 189, 189);
+  --global--border: 0.1em solid rgba(185, 179, 179, 0.4);
+  --global-border-bottom-video: 0.1em solid rgba(185, 179, 179, 0.4);
   --global--border-hr: 0.1rem solid rgb(189, 189, 189);
   --global--icon-color: rgb(144, 144, 144);
   --global--background-color: rgb(255, 255, 255);
-  --global-border-bottom-video: 0.2px solid rgb(189, 189, 189);
   --global-avatar-size: 45px;
   --global-avatar-border: 50%;
   --global-margin-body-video: 15px;
   --global-size-icons: 22px;
+  --global-secondary-color: rgb(102, 102, 102);
+  --global-background: rgb(255, 255, 255);
 }
 
 html,
 body,
 #root,
+.hero,
 .App {
   margin: 0;
   padding: 0;
@@ -30,7 +29,7 @@ body,
   width: 100%;
   box-sizing: border-box;
   font-family: var(--font-family-default);
-  background-color: rgb(249, 249, 249);
+  background-color: var(--global-background);
 }
 
 h1,
@@ -48,7 +47,4 @@ h6 {
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
-}
-.App#hidden-on-show-menu {
-  overflow: hidden;
 }

@@ -1,0 +1,9 @@
+.hero {
+  font-size: 0.9rem;
+  display: flex;
+  background-color: transparent;
+}
+
+.hero#hidden-on-show-menu {
+  overflow: hidden;
+}

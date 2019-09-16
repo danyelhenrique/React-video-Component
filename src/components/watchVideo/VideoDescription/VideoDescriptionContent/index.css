@@ -1,0 +1,47 @@
+.videoBodyContent {
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--global-border-bottom-video);
+  white-space: pre-wrap;
+  text-align: left;
+  grid-area: video-config-description;
+  margin-right: var(--margin-left-right);
+  margin-left: var(--margin-left-right);
+}
+
+.videoBodyContent-items {
+  width: calc(100% - 45px);
+  width: calc(100% - 220px);
+  margin-left: 60px;
+}
+.videoBodyContent p {
+  margin-top: 0px;
+}
+.videoBodyContent.hidden-content span {
+  display: none;
+}
+
+.videoBodyContent.hidden-content button {
+  margin-top: 0px;
+}
+
+.videoBodyContent > span {
+  white-space: pre-wrap;
+  line-height: 1.2rem;
+}
+
+.videoBodyContent button {
+  outline: none;
+  border: none;
+  padding: 0 35px 0 0;
+  margin-top: 15px;
+  height: 36px;
+  display: flex;
+  align-self: flex-start;
+  color: #606060;
+  border-radius: 1.5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 2px;
+}
